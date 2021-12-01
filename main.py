@@ -3,6 +3,11 @@ import time
 # Program Settings
 N = 42 # Population Size - value size being calculated
 
+def check_input(N: int): # Checks N to be a positive integer value
+    if type(N) != int:
+        raise TypeError("The input N must be a positive integer.")
+    if N < 1:
+        raise ValueError("The input N must be a positive integer.")
 
 print(f"Starting calculations on fibonacci at {N}")
 ########################################
@@ -11,6 +16,8 @@ print(f"Starting calculations on fibonacci at {N}")
 operation_name = "Fibonacci Without Caching"
 fib_st = time.perf_counter() # Start time of operation
 def fibonacci(n: int):
+    check_input(N) # Checks for valid input
+
     # Calculations for fibonacci of n
     if n == 1:
         return 1
@@ -35,6 +42,8 @@ cached_fib_st = time.perf_counter() # Start time of operation
 fibonacci_cache = {}
 
 def fibonacci_with_cache(n: int):
+    check_input(N) # Checks for valid input
+
     # if n was already calculated before, skips calculation and returns the value.
     if n in fibonacci_cache:
         return fibonacci_cache[n]
